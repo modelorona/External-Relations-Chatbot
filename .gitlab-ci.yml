@@ -1,0 +1,25 @@
+stages:
+  - test
+#   - deploy
+
+test_python:
+#   image: python:3.6
+  stage: test
+  script:
+    - cd server
+    - pip3 install -r requirements.txt
+    - cd externalrelations
+    - python3 manage.py test
+
+# deploy_to_aws:
+# #   image: ubuntu:latest
+#   before_script:
+#     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#   only:
+#     - master
+#   stage: deploy
+#   script:
+#     - chmod +x deploy/disableHostKeyChecking.sh
+#     - chmod +x deploy/updateServer.sh
+#     - chmod +x deploy/deploy.sh
+#     - bash deploy/deploy.sh
